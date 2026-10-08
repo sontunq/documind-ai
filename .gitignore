@@ -18,3 +18,5 @@ uploads/
 .coverage
 htmlcov/
 AGENTS.md
+docs/roadmap.md
+docs/progress.md
