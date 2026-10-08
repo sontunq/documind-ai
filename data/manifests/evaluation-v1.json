@@ -1,0 +1,706 @@
+{
+  "dataset_version": "evaluation-synthetic-v1",
+  "description": "Authoritative multi-stage evaluation manifest for DocuMind AI Phase 7: OCR, Classification, and Extraction",
+  "evaluation_tracks": [
+    "ocr",
+    "classification",
+    "extraction"
+  ],
+  "ocr_samples": [
+    {
+      "id": "ocr-eval-en-01",
+      "category": "clean-english",
+      "reference_text": "INVOICE #INV-2026-9041 Date: 2026-03-15 Total: $1,375.00",
+      "hypothesis_text": "INVOICE #INV-2026-9041 Date: 2026-03-15 Total: $1,375.00"
+    },
+    {
+      "id": "ocr-eval-en-02",
+      "category": "legal-clause",
+      "reference_text": "The parties hereby agree that all disputes shall be governed by Delaware law.",
+      "hypothesis_text": "The parties hereby agree that all disputes shall be governed by Delaware law."
+    },
+    {
+      "id": "ocr-eval-en-03",
+      "category": "ocr-noise-substitution",
+      "reference_text": "Payment terms: Net 30 days upon receipt of commercial invoice.",
+      "hypothesis_text": "Payment terms: Net 30 days upon receipt of conmercial invoice."
+    },
+    {
+      "id": "ocr-eval-vi-01",
+      "category": "clean-vietnamese",
+      "reference_text": "HÓA ĐƠN GIÁ TRỊ GIA TĂNG (VAT INVOICE) Mẫu số: 01GTKT0/001 Ký hiệu: AA/26E",
+      "hypothesis_text": "HÓA ĐƠN GIÁ TRỊ GIA TĂNG (VAT INVOICE) Mẫu số: 01GTKT0/001 Ký hiệu: AA/26E"
+    },
+    {
+      "id": "ocr-eval-vi-02",
+      "category": "vietnamese-diacritic-noise",
+      "reference_text": "Đại diện bên A: Giám đốc điều hành Nguyễn Văn An",
+      "hypothesis_text": "Đại diện bên A: Giám đốc điêu hành Nguyễn Văn An"
+    },
+    {
+      "id": "ocr-eval-form-01",
+      "category": "form-trailing-dots",
+      "reference_text": "Full Name: Johnathan Doe Date of Birth: 1990-05-15",
+      "hypothesis_text": "Full Name: Johnathan Doe Date of Birth: 1990-05-15"
+    }
+  ],
+  "classification_samples": [
+    {
+      "id": "invoice-test-01",
+      "label": "invoice",
+      "text": "INVOICE GP-52\nGrove Equipment bills Demo Museum for projector rental.\nRental 2 days at 45.00 equals 90.00. Insurance 10.00. Subtotal 100.00. Tax 10.00. Amount due USD 110.00. Date February 18; payable March 4.",
+      "source_reference": "classification-v1.json#invoice-test-01"
+    },
+    {
+      "id": "invoice-test-02",
+      "label": "invoice",
+      "text": "Amount payable: 84.00 USD\nBilled to Sample Bakery by Example Laundry. Invoice LA-619.\nApron washing quantity 30 price 2.00 total 60.00; towel service 24.00. Tax exempt. Payment reference LA-619. Please pay within 21 days.",
+      "source_reference": "classification-v1.json#invoice-test-02"
+    },
+    {
+      "id": "invoice-test-03",
+      "label": "invoice",
+      "text": "Repair bill RB-85. Customer Demo Cycling. Seller Sample Mechanics.\nWheel service 35.00, tire 25.00, installation 15.00. Subtotal 75.00. Sales tax 7.50. Total balance 82.50. Issue date April 11. Due date April 25.",
+      "source_reference": "classification-v1.json#invoice-test-03"
+    },
+    {
+      "id": "invoice-test-04",
+      "label": "invoice",
+      "text": "INVOlCE 714\nBill to Demo Learning. From Example Audio.\nMicrophones qty 3 unit price 40.00 line amount 120.00. Freight 10.00. Tax 13.00. Total due 143.00. Payment terms net 15. Reference order AU-31.",
+      "source_reference": "classification-v1.json#invoice-test-04"
+    },
+    {
+      "id": "invoice-test-05",
+      "label": "invoice",
+      "text": "Payment request for delivered supplies\nDocument number SO-90. Sample Laboratory to Demo School.\nGloves 10 boxes at 6.00; goggles 5 at 8.00. Net total 100.00. VAT 10.00. Gross amount payable 110.00. Settlement by bank transfer within 30 days.",
+      "source_reference": "classification-v1.json#invoice-test-05"
+    },
+    {
+      "id": "invoice-test-06",
+      "label": "invoice",
+      "text": "ACCOUNT CHARGES\nExample Storage, customer Demo Archive. Invoice ST-909.\nUnit rental September 80.00. Access fee 5.00. Credit applied 10.00. Tax 7.50. Remaining balance 82.50 USD. Pay no later than October 3.",
+      "source_reference": "classification-v1.json#invoice-test-06"
+    },
+    {
+      "id": "contract-test-01",
+      "label": "contract",
+      "text": "PROFESSIONAL SERVICES CONTRACT\nOak Training and Demo Association enter into this agreement for staff workshops. Trainer shall provide materials and deliver six sessions. Client shall pay on completion. Cancellation requires twenty days notice. Changes must be signed by both parties. Effective date May 1.",
+      "source_reference": "classification-v1.json#contract-test-01"
+    },
+    {
+      "id": "contract-test-02",
+      "label": "contract",
+      "text": "Confidential information undertaking\nDisclosing party Example Energy; receiving party Sample Engineering. Recipient agrees to use disclosed plans only for evaluation. Disclosure to others is forbidden without consent. These obligations survive expiry for three years. Governing law applies. Executed by the parties.",
+      "source_reference": "classification-v1.json#contract-test-02"
+    },
+    {
+      "id": "contract-test-03",
+      "label": "contract",
+      "text": "Venue hire agreement\nDemo Arts hires Sample Hall from July 10 to July 12. Hirer shall restore the premises after use. Owner provides utilities. Damages are payable by hirer. Either party may cancel under section 5. This contract constitutes the entire agreement between the parties.",
+      "source_reference": "classification-v1.json#contract-test-03"
+    },
+    {
+      "id": "contract-test-04",
+      "label": "contract",
+      "text": "Terms of engagement\nSample Audit is appointed by Demo Enterprise to examine annual records. Auditor shall maintain confidentiality and independence. Client agrees to provide access and pay the fixed fee. Engagement ends upon delivery of the report. Disputes follow the agreed mediation procedure. Signed on behalf of each party.",
+      "source_reference": "classification-v1.json#contract-test-04"
+    },
+    {
+      "id": "contract-test-05",
+      "label": "contract",
+      "text": "AGREEMENT FOR TRANSPORT SERVICES\nCarrier Example Logistics shall deliver Demo Farm products weekly. Liability for damaged goods is limited as specified. Fees are subject to written approval. Term: six months from execution. Termination for breach requires notice and an opportunity to remedy. Authorized signatures.",
+      "source_reference": "classification-v1.json#contract-test-05"
+    },
+    {
+      "id": "contract-test-06",
+      "label": "contract",
+      "text": "Collaboration terms between Sample Gallery and Demo Artists. Each party retains ownership of existing works. Exhibition proceeds will be shared equally. Neither party may assign rights without written consent. This agreement may be terminated with thirty days notice. Signed and dated by both representatives.",
+      "source_reference": "classification-v1.json#contract-test-06"
+    },
+    {
+      "id": "form-test-01",
+      "label": "form",
+      "text": "WORKSHOP SIGN-UP FORM\nAttendee full name: ______ Email: ______\nSelect workshop [ ] drawing [ ] pottery [ ] photography\nPreferred date: ______ Number of participants: ______\nSpecial requests: ______ Contact phone: ______\nPlease complete and return to reception.",
+      "source_reference": "classification-v1.json#form-test-01"
+    },
+    {
+      "id": "form-test-02",
+      "label": "form",
+      "text": "Visitor entry record\nName: ______ Company: ______ Person to visit: ______\nArrival time: ______ Badge number: ______\nPurpose of visit: ______ Vehicle registration: ______\nSignature: ______ Departure time: ______\nReception use only: approved by ______",
+      "source_reference": "classification-v1.json#form-test-02"
+    },
+    {
+      "id": "form-test-03",
+      "label": "form",
+      "text": "Document request form\nRequester name: ______ Department: ______\nDocument title: ______ Reference number: ______\nRequired format: [ ] paper [ ] digital\nReason for request: ______ Date needed: ______\nAuthorization signature: ______ Date: ______",
+      "source_reference": "classification-v1.json#form-test-03"
+    },
+    {
+      "id": "form-test-04",
+      "label": "form",
+      "text": "New student details\nGiven name: ______ Family name: ______ Date of birth: ______\nGuardian contact: ______ Address: ______\nSelect transport [ ] bus [ ] walk [ ] other\nAdditional information: ______\nCompleted by: ______ Signature: ______ For administration use: record ID ______",
+      "source_reference": "classification-v1.json#form-test-04"
+    },
+    {
+      "id": "form-test-05",
+      "label": "form",
+      "text": "FACILITY BOOKING APPLICATION\nApplicant: ______ Organization: ______ Contact email: ______\nRoom requested: ______ Event date: ______ Start time: ______ End time: ______\nEquipment required [ ] chairs [ ] projector [ ] microphone\nApplicant signature: ______ Approval section: ______",
+      "source_reference": "classification-v1.json#form-test-05"
+    },
+    {
+      "id": "form-test-06",
+      "label": "form",
+      "text": "Lost property report\nYour name: ______ Telephone: ______ Email: ______\nItem lost: ______ Color: ______ Last seen location: ______\nDate lost: ______ Further description: ______\nStaff reference: ______ Received by: ______\nPlease fill in all known details.",
+      "source_reference": "classification-v1.json#form-test-06"
+    }
+  ],
+  "extraction_samples": [
+    {
+      "id": "eval-ext-invoice-en-01",
+      "document_type": "invoice",
+      "language": "en",
+      "ocr_lines": [
+        {
+          "text": "TAX INVOICE",
+          "box": {
+            "x": 0.1,
+            "y": 0.05,
+            "w": 0.3,
+            "h": 0.04
+          },
+          "confidence": 0.99,
+          "page": 1
+        },
+        {
+          "text": "Invoice Number: INV-2026-9041",
+          "box": {
+            "x": 0.1,
+            "y": 0.12,
+            "w": 0.35,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Issue Date: 2026-03-15",
+          "box": {
+            "x": 0.1,
+            "y": 0.16,
+            "w": 0.25,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        },
+        {
+          "text": "Due Date: 2026-04-15",
+          "box": {
+            "x": 0.1,
+            "y": 0.2,
+            "w": 0.25,
+            "h": 0.03
+          },
+          "confidence": 0.96,
+          "page": 1
+        },
+        {
+          "text": "Supplier: Apex Cloud Services LLC",
+          "box": {
+            "x": 0.1,
+            "y": 0.26,
+            "w": 0.4,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Customer: Beacon Retail Corp",
+          "box": {
+            "x": 0.1,
+            "y": 0.32,
+            "w": 0.35,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        },
+        {
+          "text": "Subtotal: $1,250.00",
+          "box": {
+            "x": 0.6,
+            "y": 0.7,
+            "w": 0.3,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Tax: $125.00",
+          "box": {
+            "x": 0.6,
+            "y": 0.74,
+            "w": 0.2,
+            "h": 0.03
+          },
+          "confidence": 0.96,
+          "page": 1
+        },
+        {
+          "text": "Total Due: $1,375.00",
+          "box": {
+            "x": 0.6,
+            "y": 0.8,
+            "w": 0.3,
+            "h": 0.04
+          },
+          "confidence": 0.99,
+          "page": 1
+        }
+      ],
+      "ground_truth": {
+        "invoice_number": "INV-2026-9041",
+        "issue_date": "2026-03-15",
+        "due_date": "2026-04-15",
+        "supplier": "Apex Cloud Services LLC",
+        "customer": "Beacon Retail Corp",
+        "subtotal": 1250.0,
+        "tax": 125.0,
+        "total": 1375.0,
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "eval-ext-invoice-vi-01",
+      "document_type": "invoice",
+      "language": "vi",
+      "ocr_lines": [
+        {
+          "text": "HÓA ĐƠN GIÁ TRỊ GIA TĂNG",
+          "box": {
+            "x": 0.2,
+            "y": 0.05,
+            "w": 0.6,
+            "h": 0.04
+          },
+          "confidence": 0.99,
+          "page": 1
+        },
+        {
+          "text": "Số hóa đơn: HD-00928",
+          "box": {
+            "x": 0.1,
+            "y": 0.12,
+            "w": 0.3,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Ngày lập: 15/09/2026",
+          "box": {
+            "x": 0.1,
+            "y": 0.16,
+            "w": 0.25,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Hạn thanh toán: 15/10/2026",
+          "box": {
+            "x": 0.1,
+            "y": 0.2,
+            "w": 0.3,
+            "h": 0.03
+          },
+          "confidence": 0.96,
+          "page": 1
+        },
+        {
+          "text": "Bên bán: Công ty TNHH Ánh Dương",
+          "box": {
+            "x": 0.1,
+            "y": 0.26,
+            "w": 0.45,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        },
+        {
+          "text": "Bên mua: Công ty Cổ phần Toàn Cầu",
+          "box": {
+            "x": 0.1,
+            "y": 0.32,
+            "w": 0.45,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        },
+        {
+          "text": "Cộng tiền hàng: 20.000.000 VNĐ",
+          "box": {
+            "x": 0.5,
+            "y": 0.7,
+            "w": 0.4,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Thuế GTGT: 2.000.000 VNĐ",
+          "box": {
+            "x": 0.5,
+            "y": 0.74,
+            "w": 0.35,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Tổng tiền thanh toán: 22.000.000 VNĐ",
+          "box": {
+            "x": 0.5,
+            "y": 0.8,
+            "w": 0.45,
+            "h": 0.04
+          },
+          "confidence": 0.99,
+          "page": 1
+        }
+      ],
+      "ground_truth": {
+        "invoice_number": "HD-00928",
+        "issue_date": "2026-09-15",
+        "due_date": "2026-10-15",
+        "supplier": "Công ty TNHH Ánh Dương",
+        "customer": "Công ty Cổ phần Toàn Cầu",
+        "subtotal": 20000000.0,
+        "tax": 2000000.0,
+        "total": 22000000.0,
+        "currency": "VND"
+      }
+    },
+    {
+      "id": "eval-ext-contract-en-01",
+      "document_type": "contract",
+      "language": "en",
+      "ocr_lines": [
+        {
+          "text": "MASTER SERVICES AGREEMENT",
+          "box": {
+            "x": 0.2,
+            "y": 0.05,
+            "w": 0.6,
+            "h": 0.04
+          },
+          "confidence": 0.99,
+          "page": 1
+        },
+        {
+          "text": "Contract Number: MSA-2026-01",
+          "box": {
+            "x": 0.1,
+            "y": 0.12,
+            "w": 0.35,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Party A: Acme Technology Corp",
+          "box": {
+            "x": 0.1,
+            "y": 0.18,
+            "w": 0.4,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        },
+        {
+          "text": "Party B: Global Logistics Ltd",
+          "box": {
+            "x": 0.1,
+            "y": 0.24,
+            "w": 0.4,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        },
+        {
+          "text": "Effective Date: 2026-01-01",
+          "box": {
+            "x": 0.1,
+            "y": 0.3,
+            "w": 0.3,
+            "h": 0.03
+          },
+          "confidence": 0.96,
+          "page": 1
+        },
+        {
+          "text": "Expiry Date: 2027-01-01",
+          "box": {
+            "x": 0.1,
+            "y": 0.34,
+            "w": 0.3,
+            "h": 0.03
+          },
+          "confidence": 0.96,
+          "page": 1
+        },
+        {
+          "text": "Contract Value: $150,000.00 USD",
+          "box": {
+            "x": 0.1,
+            "y": 0.4,
+            "w": 0.35,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Governing Law: State of Delaware",
+          "box": {
+            "x": 0.1,
+            "y": 0.46,
+            "w": 0.4,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        }
+      ],
+      "ground_truth": {
+        "contract_number": "MSA-2026-01",
+        "title": "Master Services Agreement",
+        "party_a": "Acme Technology Corp",
+        "party_b": "Global Logistics Ltd",
+        "effective_date": "2026-01-01",
+        "expiry_date": "2027-01-01",
+        "contract_value": 150000.0,
+        "governing_law": "State of Delaware"
+      }
+    },
+    {
+      "id": "eval-ext-contract-vi-01",
+      "document_type": "contract",
+      "language": "vi",
+      "ocr_lines": [
+        {
+          "text": "HỢP ĐỒNG CUNG CẤP DỊCH VỤ",
+          "box": {
+            "x": 0.2,
+            "y": 0.05,
+            "w": 0.6,
+            "h": 0.04
+          },
+          "confidence": 0.99,
+          "page": 1
+        },
+        {
+          "text": "Số hợp đồng: HD-2026-DV01",
+          "box": {
+            "x": 0.1,
+            "y": 0.12,
+            "w": 0.35,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Bên A: Công ty Cổ phần Công nghệ Sao Mai",
+          "box": {
+            "x": 0.1,
+            "y": 0.18,
+            "w": 0.5,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        },
+        {
+          "text": "Bên B: Tập đoàn Đầu tư Phát triển Phương Nam",
+          "box": {
+            "x": 0.1,
+            "y": 0.24,
+            "w": 0.55,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        },
+        {
+          "text": "Thời hạn hợp đồng: 2026-04-01 đến 2027-04-01",
+          "box": {
+            "x": 0.1,
+            "y": 0.3,
+            "w": 0.45,
+            "h": 0.03
+          },
+          "confidence": 0.96,
+          "page": 1
+        },
+        {
+          "text": "Giá trị hợp đồng: 50.000.000 VNĐ",
+          "box": {
+            "x": 0.1,
+            "y": 0.36,
+            "w": 0.4,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Luật áp dụng: Pháp luật nước Cộng hòa Xã hội Chủ nghĩa Việt Nam",
+          "box": {
+            "x": 0.1,
+            "y": 0.42,
+            "w": 0.6,
+            "h": 0.03
+          },
+          "confidence": 0.96,
+          "page": 1
+        }
+      ],
+      "ground_truth": {
+        "contract_number": "HD-2026-DV01",
+        "title": "Hợp đồng cung cấp dịch vụ",
+        "party_a": "Công ty Cổ phần Công nghệ Sao Mai",
+        "party_b": "Tập đoàn Đầu tư Phát triển Phương Nam",
+        "effective_date": "2026-04-01",
+        "expiry_date": "2027-04-01",
+        "contract_value": 50000000.0,
+        "governing_law": "Pháp luật nước Cộng hòa Xã hội Chủ nghĩa Việt Nam"
+      }
+    },
+    {
+      "id": "eval-ext-form-en-01",
+      "document_type": "form",
+      "language": "en",
+      "ocr_lines": [
+        {
+          "text": "VENDOR REGISTRATION FORM",
+          "box": {
+            "x": 0.2,
+            "y": 0.05,
+            "w": 0.6,
+            "h": 0.04
+          },
+          "confidence": 0.99,
+          "page": 1
+        },
+        {
+          "text": "Company Name: Apex Global Ltd",
+          "box": {
+            "x": 0.1,
+            "y": 0.15,
+            "w": 0.4,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Tax ID: 9948201",
+          "box": {
+            "x": 0.1,
+            "y": 0.22,
+            "w": 0.3,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        },
+        {
+          "text": "Contact Email: info@apexglobal.example",
+          "box": {
+            "x": 0.1,
+            "y": 0.28,
+            "w": 0.45,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        }
+      ],
+      "ground_truth": {
+        "form_title": "VENDOR REGISTRATION FORM",
+        "Company Name": "Apex Global Ltd",
+        "Tax ID": "9948201",
+        "Contact Email": "info@apexglobal.example"
+      }
+    },
+    {
+      "id": "eval-ext-form-vi-01",
+      "document_type": "form",
+      "language": "vi",
+      "ocr_lines": [
+        {
+          "text": "PHIẾU ĐĂNG KÝ HỘI VIÊN",
+          "box": {
+            "x": 0.2,
+            "y": 0.05,
+            "w": 0.6,
+            "h": 0.04
+          },
+          "confidence": 0.99,
+          "page": 1
+        },
+        {
+          "text": "Họ và tên: Nguyễn Văn An",
+          "box": {
+            "x": 0.1,
+            "y": 0.15,
+            "w": 0.35,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        },
+        {
+          "text": "Số CCCD: 001202008899",
+          "box": {
+            "x": 0.1,
+            "y": 0.22,
+            "w": 0.35,
+            "h": 0.03
+          },
+          "confidence": 0.97,
+          "page": 1
+        },
+        {
+          "text": "Số điện thoại: 0912345678",
+          "box": {
+            "x": 0.1,
+            "y": 0.28,
+            "w": 0.35,
+            "h": 0.03
+          },
+          "confidence": 0.98,
+          "page": 1
+        }
+      ],
+      "ground_truth": {
+        "form_title": "PHIẾU ĐĂNG KÝ HỘI VIÊN",
+        "Họ và tên": "Nguyễn Văn An",
+        "Số CCCD": "001202008899",
+        "Số điện thoại": "0912345678"
+      }
+    }
+  ]
+}

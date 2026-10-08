@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: documind-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: documind
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_dev_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d documind"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: documind-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:postgres_dev_password@postgres:5432/documind
+      DOCUMENT_STORAGE_DIR: /data/storage
+      MAX_UPLOAD_BYTES: 26214400
+      MAX_PDF_PAGES: 50
+      MAX_IMAGE_PIXELS: 25000000
+      OCR_CACHE_DIR: /data/ocr_models
+      OCR_CPU_THREADS: 2
+    ports:
+      - "8000:8000"
+    volumes:
+      - documind_storage:/data/storage
+      - ocr_cache:/data/ocr_models
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: documind-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  documind_storage:
+  ocr_cache:
